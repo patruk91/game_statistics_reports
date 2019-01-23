@@ -68,3 +68,25 @@ def get_line_number_by_title(file_name, title):
             return line_number[0]
         else:
             raise ValueError("Could not find {} in {}".format(title, file_name))
+
+
+def sort_abc(file_name):
+    """
+    Return titles of games in alphabetical order.
+    :param file_name: Text file where include information about games.
+    :return: Sorted game titles.
+    """
+
+    with open(file_name) as file_object:
+        games = file_object.readlines()
+    games_titles = [game.rstrip().split("\t")[0] for game in games]
+    i = 0
+
+    while i < len(games_titles):
+        for index in range(len(games_titles) - 1):
+            if games_titles[index] > games_titles[index + 1]:
+                temp = games_titles[index]
+                games_titles[index] = games_titles[index + 1]
+                games_titles[index + 1] = temp
+        i += 1
+    return games_titles
