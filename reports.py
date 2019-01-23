@@ -52,3 +52,19 @@ def count_by_genre(file_name, genre):
     genres = [game.rstrip().split("\t")[3] for game in games]
 
     return genres.count(genre)
+
+
+def get_line_number_by_title(file_name, title):
+    """
+    Find the line number of the given game (by title).
+    :param file_name: Text file where include information about games.
+    :param title: Title of the game.
+    :return: Line number from the file.
+    """
+    with open(file_name) as file_object:
+        games = file_object.readlines()
+        line_number = [(index + 1) for index, game in enumerate(games) if title in game]
+        if len(line_number) != 0:
+            return line_number[0]
+        else:
+            raise ValueError("Could not find {} in {}".format(title, file_name))
