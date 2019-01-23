@@ -90,3 +90,18 @@ def sort_abc(file_name):
                 games_titles[index + 1] = temp
         i += 1
     return games_titles
+
+
+def get_genres(file_name):
+    """
+    Return a list of all genres without duplicates.
+    :param file_name: Text file where include information about games.
+    :return: list of genres
+    """
+    with open(file_name) as file_object:
+        games = file_object.readlines()
+    games_genres = set([game.rstrip().split("\t")[3] for game in games])
+    games_genres = list(sorted(games_genres))
+
+    return games_genres
+
