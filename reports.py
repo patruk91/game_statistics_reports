@@ -105,3 +105,17 @@ def get_genres(file_name):
 
     return games_genres
 
+
+def when_was_top_sold_fps(file_name, genre = "First-person shooter"):
+    """
+    Find release date of the top sold "First-person shooter".
+    :param file_name: Text file where include information about games.
+    :return: year of top sold game
+    """
+    with open(file_name) as file_object:
+        games = file_object.readlines()
+    games_shooters = [game.rstrip().split("\t") for game in games if genre in game]
+    sold_copies = [(float(shooter[1])) for shooter in games_shooters]
+    index_top_sold_game = sold_copies.index(max(sold_copies))
+
+    return int(games_shooters[index_top_sold_game][2])
