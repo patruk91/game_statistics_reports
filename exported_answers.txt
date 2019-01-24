@@ -1,0 +1,8 @@
+Total games in game_stat.txt: 24
+Action-adventure
+First-person shooter
+RPG
+Real-time strategy
+Sandbox
+Simulation
+Survival game
