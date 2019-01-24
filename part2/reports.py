@@ -2,12 +2,22 @@ filename = "game_stat.txt"
 
 
 def read_data_from_file(filename):
+    """
+    Read data about games from indicated file.
+    :param filename: Text file where include information about games.
+    :return: List of games
+    """
     with open(filename) as file_object:
         games = file_object.readlines()
     return games
 
 
 def get_most_played(filename):
+    """
+    Find the title of the most played game (i.e. sold the most copies).
+    :param filename: Text file where include information about games.
+    :return: Title of the game.
+    """
     games = read_data_from_file(filename)
 
     list_of_games = [game.rstrip().split("\t") for game in games]
@@ -18,6 +28,11 @@ def get_most_played(filename):
 
 
 def sum_sold(filename):
+    """
+    Find how many copies have been sold in total.
+    :param filename: Text file where include information about games.
+    :return: Number of copies.
+    """
     games = read_data_from_file(filename)
 
     total_sum = sum([float(game.rstrip().split("\t")[1]) for game in games])
@@ -25,6 +40,11 @@ def sum_sold(filename):
 
 
 def get_selling_avg(filename):
+    """
+    Find average selling.
+    :param filename: Text file where include information about games.
+    :return: Number of average sold copy.
+    """
     games = read_data_from_file(filename)
     total_sum = sum_sold(filename)
 
@@ -33,6 +53,11 @@ def get_selling_avg(filename):
 
 
 def count_longest_title(filename):
+    """
+    Find how many characters long have the longest title.
+    :param filename: Text file where include information about games.
+    :return: Number of length title.
+    """
     games = read_data_from_file(filename)
 
     games_titles = [game.rstrip().split("\t")[0] for game in games]
@@ -41,6 +66,11 @@ def count_longest_title(filename):
 
 
 def get_date_avg(filename):
+    """
+    Find the average of the release dates.
+    :param filename: Text file where include information about games.
+    :return: Average year.
+    """
     games = read_data_from_file(filename)
 
     games_dates = [int(game.rstrip().split("\t")[2]) for game in games]
@@ -49,6 +79,12 @@ def get_date_avg(filename):
 
 
 def get_game(filename, title):
+    """
+    Find properties searched game.
+    :param filename: Text file where include information about games.
+    :param title: Title of searched game.
+    :return: List with information about game.
+    """
     games = read_data_from_file(filename)
 
     all_info_about_game = [game.rstrip().split("\t") for game in games if game.split("\t")[0] == title][0]
@@ -63,6 +99,11 @@ def get_game(filename, title):
 
 
 def count_grouped_by_genre(filename):
+    """
+    Find how many games are there grouped by genre.
+    :param filename: Text file where include information about games.
+    :return: Dictionary with {genre:number}
+    """
     games = read_data_from_file(filename)
     games_genres = [game.rstrip().split("\t")[3] for game in games]
     genre_dict = {}
@@ -74,6 +115,11 @@ def count_grouped_by_genre(filename):
 
 
 def get_date_ordered(filename):
+    """
+    Find ordered list of the games by date and alphabet order.
+    :param filename: Text file where include information about games.
+    :return: list with sorted titles.
+    """
     games = read_data_from_file(filename)
     order = sorted([game.rstrip().split("\t") for game in games], key=lambda x: (int(x[2]), [-ord(c.lower()) for c in x[0]]), reverse=True)
     ordered_titles = [game[0] for game in order]
