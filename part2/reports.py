@@ -87,7 +87,8 @@ def get_game(filename, title):
     """
     games = read_data_from_file(filename)
 
-    all_info_about_game = [game.rstrip().split("\t") for game in games if game.split("\t")[0] == title][0]
+    all_info_about_game = [game.rstrip().split("\t")
+                           for game in games if game.split("\t")[0] == title][0]
 
     for i in range(len(all_info_about_game)):
         if all_info_about_game[i].isdigit():
@@ -121,7 +122,8 @@ def get_date_ordered(filename):
     :return: list with sorted titles.
     """
     games = read_data_from_file(filename)
-    order = sorted([game.rstrip().split("\t") for game in games], key=lambda x: (int(x[2]), [-ord(c.lower()) for c in x[0]]), reverse=True)
+    order = sorted([game.rstrip().split("\t") for game in games], key=lambda x: (
+        int(x[2]), [-ord(c.lower()) for c in x[0]]), reverse=True)
     ordered_titles = [game[0] for game in order]
 
     return ordered_titles

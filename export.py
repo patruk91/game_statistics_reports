@@ -28,12 +28,14 @@ def export_decide():
     year = int(input("Enter the searched year: "))
     value = reports.decide(filename, year)
     if value is True:
-        message = "We have a game from {} year in {}" .format(str(year), filename)
+        message = "We have a game from {} year in {}" .format(
+            str(year), filename)
 
         export_to_file(message)
         print("DATA TRANSFERRED TO A FILE: exported_answers.txt!\n")
     else:
-        message = "Sorry, we don't have game from {} year in {}".format(str(year), filename)
+        message = "Sorry, we don't have game from {} year in {}".format(
+            str(year), filename)
 
         export_to_file(message)
         print("DATA TRANSFERRED TO A FILE: exported_answers.txt!\n")
@@ -91,7 +93,8 @@ def export_when_was_top_sold_fps():
     """Export to file: release date of the top sold "First-person shooter"."""
     genre = input("Please, give me a searched genre game: ")
     top_game = reports.when_was_top_sold_fps(filename, genre)
-    message = "The top sold {} genre was released in: {}" .format(genre, top_game)
+    message = "The top sold {} genre was released in: {}" .format(
+        genre, top_game)
 
     export_to_file(message)
     print("DATA TRANSFERRED TO A FILE: exported_answers.txt!\n")

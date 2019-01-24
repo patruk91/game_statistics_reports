@@ -18,9 +18,13 @@ def display_decide():
     year = int(input("Enter the searched year: "))
     value = reports.decide(filename, year)
     if value is True:
-        print("We have a game from {} year in {}\n" .format(str(year), filename))
+        print(
+            "We have a game from {} year in {}\n" .format(
+                str(year), filename))
     else:
-        print("Sorry, we don't have game from {} year in {}\n".format(str(year), filename))
+        print(
+            "Sorry, we don't have game from {} year in {}\n".format(
+                str(year), filename))
 
 
 def display_get_latest():
