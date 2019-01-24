@@ -8,11 +8,13 @@ filename = "game_stat.txt"
 
 
 def display_count_games():
+    """Display how many games are in the file."""
     numbers_of_games = reports.count_games(filename)
     print("Total games in {}: {}\n" .format(filename, numbers_of_games))
 
 
 def display_decide():
+    """Display if there is game from a given year."""
     year = int(input("Enter the searched year: "))
     value = reports.decide(filename, year)
     if value is True:
@@ -22,23 +24,27 @@ def display_decide():
 
 
 def display_get_latest():
+    """Display the newest title of game."""
     latest_game = reports.get_latest(filename)
     print("Title of latest game: {}\n" .format(latest_game))
 
 
 def display_count_by_genre():
+    """Display how many games is by genre."""
     genre = input("Please. give me a genre of game: ")
     genres = reports.count_by_genre(filename, genre)
     print("We have {} games from {} genre.\n" .format(genres, genre))
 
 
 def display_get_line_number_by_title():
+    """Display the line number of the given game (by title)."""
     title = input("Please provide title of the game: ")
     line_number = reports.get_line_number_by_title(filename, title)
     print("The number of line in {} is {}\n" .format(filename, line_number))
 
 
 def display_sort_abc():
+    """Display titles of games in alphabetical order."""
     sorted_games = reports.sort_abc(filename)
     print("List of games in alphabetical order: ")
     [print(game_title) for game_title in sorted_games]
@@ -46,27 +52,33 @@ def display_sort_abc():
 
 
 def display_get_genres():
+    """Display a list of all genres without duplicates."""
     game_genres = reports.get_genres(filename)
     [print(genre) for genre in game_genres]
     print()
 
 
 def display_when_was_top_sold_fps():
+    """Display release date of the top sold "First-person shooter"."""
     genre = input("Please, give me a searched genre game: ")
     top_game = reports.when_was_top_sold_fps(filename, genre)
     print("The top sold {} genre was released in: {}\n" .format(genre, top_game))
 
 
 def choose_option():
-    print("1. how many games are in the file.")
-    print("2. is there a game from a given year.")
-    print("3. the latest game.")
-    print("4. how many games do we have by genre.")
-    print("5. line number of the given game (by title)")
-    print("6. alphabetical ordered list of the titles")
-    print("7. all genres without duplicates")
-    print("8. release date of the top sold game (by genre)")
-    print("9. Exit")
+    """
+    Display menu with options.
+    :return: user option
+    """
+    print("1. how many games are in the file."
+          "\n2. is there a game from a given year."
+          "\n3. the latest game."
+          "\n4. how many games do we have by genre."
+          "\n5. line number of the given game (by title)"
+          "\n6. alphabetical ordered list of the titles"
+          "\n7. all genres without duplicates"
+          "\n8. release date of the top sold game (by genre)"
+          "\n9. Exit")
 
     option = input("\nDisplay: ")
     return option
