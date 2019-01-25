@@ -6,7 +6,7 @@ import reports
 
 filename = "game_stat.txt"
 
-git 
+
 def display_get_most_played():
     title_game = reports.get_most_played(filename)
     print("Title of most played game in {}: {}\n" .format(filename, title_game))
