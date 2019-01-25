@@ -123,7 +123,7 @@ def get_date_ordered(filename):
     """
     games = read_data_from_file(filename)
     order = sorted([game.rstrip().split("\t") for game in games], key=lambda x: (
-        int(x[2]), [-ord(c.lower()) for c in x[0]]), reverse=True)
+        int(x[2]), [-ord(character.lower()) for character in x[0]]), reverse=True)
     ordered_titles = [game[0] for game in order]
 
     return ordered_titles
