@@ -1,52 +1,70 @@
 import os
 
-
 import reports
-
 
 filename = "game_stat.txt"
 
 
 def display_get_most_played():
+    """Display the title of the most played game (sold the most copies)."""
     title_game = reports.get_most_played(filename)
-    print("Title of most played game in {}: {}\n" .format(filename, title_game))
+    print("Title of most played game in {}: {}\n".format(filename, title_game))
 
 
 def display_sum_sold():
+    """Display how many copies have been sold in total."""
     sold_games = reports.sum_sold(filename)
-    print("Total sold copies from {} file is: {} millions\n" .format(filename, sold_games))
+    print(
+        "Total sold copies from {} file is: {} millions\n".format(
+            filename,
+            sold_games))
 
 
 def display_get_selling_avg():
+    """Display average selling."""
     average_sell = reports.get_selling_avg(filename)
-    print("Average selling in {} is: {} per game\n" .format(filename, average_sell))
+    print(
+        "Average selling in {} is: {} per game\n".format(
+            filename,
+            average_sell))
 
 
 def display_count_longest_title():
+    """Display how many characters long have the longest title."""
     longest_title = reports.count_longest_title(filename)
-    print("The longest title in {} has a {} characters\n" .format(filename, longest_title))
+    print(
+        "The longest title in {} has a {} characters\n".format(
+            filename,
+            longest_title))
 
 
 def display_get_date_avg():
+    """Display the average of the release dates."""
     average_date = reports.get_date_avg(filename)
-    print("The average date for all games in {} is: {}\n" .format(filename, average_date))
+    print(
+        "The average date for all games in {} is: {}\n".format(
+            filename,
+            average_date))
 
 
 def display_get_game():
+    """Display properties of searched game."""
     title = input("Please give me a title searched game: ")
     info_about_game = reports.get_game(filename, title)
-    print("Properties of the game: {}\n" .format(info_about_game))
+    print("Properties of the game: {}\n".format(info_about_game))
 
 
 def display_count_grouped_by_genre():
+    """Display how many games are there grouped by genre."""
     dict_of_genre = reports.count_grouped_by_genre(filename)
     print("Game grouped by genre:")
     for genre, value in dict_of_genre.items():
-        print("{}: {}" .format(genre, value))
+        print("{}: {}".format(genre, value))
     print()
 
 
 def display_get_date_ordered():
+    """Display ordered list of the games by date and alphabet order."""
     ordered_games = reports.get_date_ordered(filename)
     print("Ordered games by date and by alphabet:")
     for title in ordered_games:
@@ -55,6 +73,10 @@ def display_get_date_ordered():
 
 
 def choose_option():
+    """
+    Display menu with options.
+    :return: user option
+    """
     print("1. title of most played game"
           "\n2. how many copies have been sold in total"
           "\n3. average selling"
